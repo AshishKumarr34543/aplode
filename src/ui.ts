@@ -1,5 +1,5 @@
 const button = document.querySelector<HTMLButtonElement>("#hello");
-const status = document.querySelector<HTMLParagraphElement>("#status");
+const statusText = document.querySelector<HTMLParagraphElement>("#status");
 
 button?.addEventListener("click", () => {
   parent.postMessage({ pluginMessage: { type: "hello" } }, "*");
@@ -7,5 +7,5 @@ button?.addEventListener("click", () => {
 
 window.onmessage = (event) => {
   const message = event.data.pluginMessage;
-  if (message?.type === "hello" && status) status.textContent = message.text;
+  if (message?.type === "hello" && statusText) statusText.textContent = message.text;
 };
