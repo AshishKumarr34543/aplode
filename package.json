@@ -1,0 +1,16 @@
+{
+  "name": "aplode",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A tiny Figma plugin for simulated client feedback",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.123.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Client Simulator",
+  "id": "aplode-client-simulator-local",
+  "api": "1.0.0",
+  "main": "dist/main.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": []
+  }
+}
