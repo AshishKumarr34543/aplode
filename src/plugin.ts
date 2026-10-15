@@ -133,7 +133,14 @@ async function generate(api: PluginApi) {
 }
 
 export async function handlePluginMessage(api: PluginApi, message: PluginMessage) {
-  if (message.type === "generate") return generate(api);
+  if (message.type === "generate") {
+    try {
+      return await generate(api);
+    } catch {
+      api.ui.postMessage({ type: "error", message: "Could not make the feedback cards. Try again?" });
+      return;
+    }
+  }
   if ((message.type === "dismiss" || message.type === "address") && message.nodeId) {
     return changeCard(api, message.nodeId, message.type);
   }

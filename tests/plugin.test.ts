@@ -47,4 +47,12 @@ describe("plugin canvas actions", () => {
     expect(card.children[2].characters).toBe("ADDRESSED");
     expect(fake.page.children).toHaveLength(10);
   });
+
+  it("reports generation errors to the open plugin UI", async () => {
+    const messages: any[] = [];
+    fake.api.loadFontAsync = async () => { throw new Error("font missing"); };
+    fake.api.ui.postMessage = (message) => messages.push(message);
+    await handlePluginMessage(fake.api, { type: "generate" });
+    expect(messages).toContainEqual({ type: "error", message: "Could not make the feedback cards. Try again?" });
+  });
 });
